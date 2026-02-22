@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= heading %></title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <h1 class="form-heading">
+      <%= heading %>
+    </h1>
+
+    <% if (locals.post) { %>
+      <form id="editForm" class="post-form" method="post" action="/api/posts/<%= post.id %>">
+
+        <label>Title</label>
+        <input type="text" name="title" value="<%= post.title %>" required>
+
+        <label>Content</label>
+        <textarea name="content" rows="10" required><%= post.content %></textarea>
+
+        <label>Author</label>
+        <input type="text" name="author" value="<%= post.author %>" required>
+
+        <button class="full-width" type="submit">
+          <%= submit %>
+        </button>
+
+      </form>
+    <% } else { %>
+
+      <form id="newPostForm" class="post-form" method="post" action="/api/posts">
+
+        <label>Title</label>
+        <input type="text" name="title" placeholder="Enter post title" required>
+
+        <label>Content</label>
+        <textarea name="content" placeholder="Write your content here..." required rows="10"></textarea>
+
+        <label>Author</label>
+        <input type="text" name="author" placeholder="Author name" required>
+
+        <button class="full-width" type="submit">
+          <%= submit %>
+        </button>
+
+      </form>
+
+    <% } %>
+
+  </div>
+</body>
+
+</html>
